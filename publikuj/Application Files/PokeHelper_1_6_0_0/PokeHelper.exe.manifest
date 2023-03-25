@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="PokeHelper.exe" version="1.6.0.0" publicKeyToken="543ff7d9237f15c2" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="Graphics\pokehelper_icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="PokeHelper" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="PokeHelper.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          Opcje manifestu kontroli konta użytkownika
+          Jeśli chcesz zmienić poziom kontroli konta użytkownika systemu Windows, zastąp węzeł 
+          requestedExecutionLevel jednym z następujących.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         Jeśli chcesz użyć wirtualizacji plików i rejestru do celów zgodności wstecznej, 
+         usuń węzeł requestedExecutionLevel.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PokeHelper.exe" size="252536">
+      <assemblyIdentity name="PokeHelper" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>GEkPYqToJyjZMpYu7fuu57cEDu5yBMBbgGho+btReZI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="Graphics\pokehelper_icon.ico" size="67646">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>i1eu84of1MxpYFthM6uQ8emtLIJ2eZRNffeBKtgjqXg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="PokeHelper.exe.config" size="189">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>R+Wg8QGvQVHX8T0ta/qbhH1bXkqY0fRnS3wBV3J0bN8=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="C=PL, E=lukasz.wyrwol@solution-tech.eu, OU=PLC Programmer, O=solution-tech, CN=Łukasz Wyrwoł" issuerKeyHash="b250c43eab45a02ac656183f566c60e24de5b704" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>H0taSh5eXsvEJpotGZZmZMeRO3w12Z4GtKh8TogXE/s=</DigestValue></Reference></SignedInfo><SignatureValue>j87GutSQthETNt5xLJOj6SeVMaqN4QePs7fZ9gbwprwbgDMl1IbN2uigMyAgkq3aSY0TO5ZCu/iE3YmBjKaEXnM9hWjdE6sylinfyVN4C52+zRgOAf56iVpeGtCpNvGLG2w1J88NslWeExs2ooa54x9tAxDZlPowUSrqZRXD/mVOAgCfgSMiStXpGYrCUvUDpO2igvUPcgYJKbzA7reduTSgfmXIiVFmNMZvL1/DFkXlWlBdbkFpDviENrdpjDH7BZzNU2gkCyBkVno1MrlEdL9VLuW7eqvSAp+KNQjm1PiAMnRBlsk1VCVfeJaKwnSom6xHDP5sgpoLAUArSYNnDg==</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>oyVCsBZgR+8P3tA3mVl0beB0F0VSek8SMK1mXuAMJFkTndgDdn6133L1wU+2dQEt2HEZgSn2Xf/GbJrzlwAVcZ8+nLCzIKmvyLHA4uIswCFduw3hd4ztGNcJ9rKeoDliS9bYyaBx7vrrfISFyvOjsKls0IAGF7yvMbMPogqB2uu+SizwuDIM6goQDn4cJq3BHEvx5JI+KtdkWZ5gXX3cFARx/whAMEYQ8iu+dQDTr91juBu6f3TC9HiejMPTezryGHD/9u+dfHfn3sLWKY2VoEpHaqnXTTASGtppbONXaVj5IM7gIfGF50MbM2XRPSxWSR+FmeV4J8v3Y00mfjoNNw==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="fb1317884e7ca8b4069ed9357c3b91c7646696192d9a26c4cb5e5e1e4a5a4b1f" Description="" Url=""><as:assemblyIdentity name="PokeHelper.exe" version="1.6.0.0" publicKeyToken="543ff7d9237f15c2" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>C=PL, E=lukasz.wyrwol@solution-tech.eu, OU=PLC Programmer, O=solution-tech, CN=Łukasz Wyrwoł</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>UP1QO9zb26qaZdVUhHmMmvAyU+YmAtN+nDmZv40oHUo=</DigestValue></Reference></SignedInfo><SignatureValue>R6aDxNw5GsQl2arVzudK6wT1/S1+8JovKs9+yesTeqKNnY2hHQvrsB4k/LedBT0jldLZbh14fnulu1v8j7q6KqXCR+LlppV6OwRin3jlBSQ8b2giyKjmM7qImTuOs2XFSG41p7v3F2eSE+kVIMOniGXjeRdsKIladKqe40bBFJDjICq9/73oFEKOND5If3jZ8GVC8NnIbZWQtqYgYkxgbZVY9X/bobhe9/UIq4l3iWJQnXhfNuhXz/3f95RfpCYmmuE0eus3/jluslnGykjk/HxA9+MoSJq5Vf0U71VM27HRXkoVFH4QEen4KvgUszzY+nUkBKygICuhxkSKwKi4xw==</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>oyVCsBZgR+8P3tA3mVl0beB0F0VSek8SMK1mXuAMJFkTndgDdn6133L1wU+2dQEt2HEZgSn2Xf/GbJrzlwAVcZ8+nLCzIKmvyLHA4uIswCFduw3hd4ztGNcJ9rKeoDliS9bYyaBx7vrrfISFyvOjsKls0IAGF7yvMbMPogqB2uu+SizwuDIM6goQDn4cJq3BHEvx5JI+KtdkWZ5gXX3cFARx/whAMEYQ8iu+dQDTr91juBu6f3TC9HiejMPTezryGHD/9u+dfHfn3sLWKY2VoEpHaqnXTTASGtppbONXaVj5IM7gIfGF50MbM2XRPSxWSR+FmeV4J8v3Y00mfjoNNw==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIDtDCCApygAwIBAgIKBhGspX9u6rsD8TANBgkqhkiG9w0BAQsFADCBhzEYMBYGA1UEAwwPxYF1a2FzeiBXeXJ3b8WCMRYwFAYDVQQKEw1zb2x1dGlvbi10ZWNoMRcwFQYDVQQLEw5QTEMgUHJvZ3JhbW1lcjEtMCsGCSqGSIb3DQEJARYebHVrYXN6Lnd5cndvbEBzb2x1dGlvbi10ZWNoLmV1MQswCQYDVQQGEwJQTDAeFw0yMTA4MjYxMjQ0NDdaFw0yNjA4MjYxMjQ0NDdaMIGHMRgwFgYDVQQDDA/FgXVrYXN6IFd5cndvxYIxFjAUBgNVBAoTDXNvbHV0aW9uLXRlY2gxFzAVBgNVBAsTDlBMQyBQcm9ncmFtbWVyMS0wKwYJKoZIhvcNAQkBFh5sdWthc3oud3lyd29sQHNvbHV0aW9uLXRlY2guZXUxCzAJBgNVBAYTAlBMMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoyVCsBZgR+8P3tA3mVl0beB0F0VSek8SMK1mXuAMJFkTndgDdn6133L1wU+2dQEt2HEZgSn2Xf/GbJrzlwAVcZ8+nLCzIKmvyLHA4uIswCFduw3hd4ztGNcJ9rKeoDliS9bYyaBx7vrrfISFyvOjsKls0IAGF7yvMbMPogqB2uu+SizwuDIM6goQDn4cJq3BHEvx5JI+KtdkWZ5gXX3cFARx/whAMEYQ8iu+dQDTr91juBu6f3TC9HiejMPTezryGHD/9u+dfHfn3sLWKY2VoEpHaqnXTTASGtppbONXaVj5IM7gIfGF50MbM2XRPSxWSR+FmeV4J8v3Y00mfjoNNwIDAQABoyAwHjAPBgkqhkiG9y8BAQoEAgUAMAsGA1UdDwQEAwIHgDANBgkqhkiG9w0BAQsFAAOCAQEAfnP7epFA/Nwdbn/AM0rPTybjfFRQywYAgm4+nmVAcUPwjq1EiXOzA3sYV+w+kWlPCb1XAxg6QyhD6vHEJD20+qu8AiBWN6orPSYDJ+JSvsCvBNEkJZbm17ZaCxMaoQtoVunNAKj+9Qw+A8+BErwa/GQn40x800x+Pal0BIiDG8E8X+f/8IFQWDuwPugYJemWvgjfhvDFpgsG183TUf7cQHLcg375Ds0OQlbd5YRS5nfP/Gd8q0wFimobRnq4t/ZV+t2mZ7lYAUzFLpyD/86Eho3WoKMY1bMQbcN6t62Ncg8/Pq/C116Xf+haTsoPPg3ciFtV9NNuv5HZylijUCTXeg==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
