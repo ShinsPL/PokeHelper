@@ -215,6 +215,7 @@ namespace PokeHelper
             this.myData.PutOptionMouseMovementTime(this.mouseMovementTimeTextBox.Text);
             this.myData.PutOptionMouseMovementLong(this.mouseMovementLongCheckBox.Checked.ToString());
         }
+
         // ******************** EVENTS FOR GUI ELEMENTS ********************
         private void SaveButton_Click(object iSender, EventArgs iE) // Save actual page into ini file
         {
@@ -247,6 +248,7 @@ namespace PokeHelper
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
+
         // ******************** EVENTS FOR GUI ELEMENTS ********************
     }
 }

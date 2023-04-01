@@ -40,10 +40,10 @@ namespace PokeHelper
         public const int HT_CAPTION = 0x2;
 
         // Variables
-        public bool Enable; // turn on/off hotkeys
-        public bool ContinousWork; // Continous work active
-        public Stopwatch Timer; // timer for checking time from last shoportcut send in continous mode
-        public int MilisecondDelay => this.myData.TakeOptionTimerDelay(); // time for timer
+        public bool enable; // turn on/off hotkeys
+        public bool continousWork; // Continous work active
+        public Stopwatch timer; // timer for checking time from last shoportcut send in continous mode
+        public int milisecondDelay => this.myData.TakeOptionTimerDelay(); // time for timer
         private HotkeyManagement managementForm1;
         private Settings managementForm2;
 
@@ -67,13 +67,13 @@ namespace PokeHelper
             this.RegisterHotKey();
 
             // Set starting value for enable
-            this.Enable = true;
+            this.enable = true;
 
             // Set starting value for continous work
-            this.ContinousWork = false;
+            this.continousWork = false;
 
             // Set timer
-            this.Timer = new Stopwatch();
+            this.timer = new Stopwatch();
 
             // Create ini file and initialize data
             this.myData = new DataManager();
@@ -84,37 +84,37 @@ namespace PokeHelper
         public void CreateInterface() // Create GUI elememnts
         {
             this.titleLabel = new Label();
-            this.SetParameters(ref this.titleLabel, new Size(120, 20), new Point(40, 5), Color.Black, Color.White, "PokeHelper v1.6");
+            this.SetParameters(ref this.titleLabel, new Size(120, 20), new Point(70, 5), Color.Black, Color.White, "PokeHelper v1.7");
             this.Controls.Add(this.titleLabel);
 
             this.minimalizeButton = new Button();
-            this.SetParameters(ref this.minimalizeButton, new Size(15, 5), new Point(250, 5), Color.Black, Color.White, "");
+            this.SetParameters(ref this.minimalizeButton, new Size(15, 5), new Point(260, 5), Color.Black, Color.White, "");
             this.minimalizeButton.Click += new EventHandler(this.MinimalizeButton_Click);
             this.Controls.Add(this.minimalizeButton);
 
             this.settingsButton = new Button();
-            this.SetParameters(ref this.settingsButton, new Size(100, 30), new Point(170, 25), Color.Black, Color.White, "Settings");
+            this.SetParameters(ref this.settingsButton, new Size(100, 30), new Point(175, 25), Color.Black, Color.White, "Settings");
             this.settingsButton.Click += new EventHandler(this.SettingsButton_Click);
             this.Controls.Add(this.settingsButton);
 
             this.hotkeyButton = new Button();
-            this.SetParameters(ref this.hotkeyButton, new Size(100, 30), new Point(65, 25), Color.Black, Color.White, "HotKeys");
+            this.SetParameters(ref this.hotkeyButton, new Size(100, 30), new Point(70, 25), Color.Black, Color.White, "HotKeys");
             this.hotkeyButton.Click += new EventHandler(this.HotKeysButton_Click);
             this.Controls.Add(this.hotkeyButton);
 
             this.enableControl = new RadioButton();
             this.enableControl.Appearance = Appearance.Button;
-            this.SetParameters(ref this.enableControl, new Size(25, 25), new Point(5, 5), Color.Green, Color.Red, "");
+            this.SetParameters(ref this.enableControl, new Size(60, 25), new Point(5, 5), Color.Green, Color.Red, "ESC");
             this.enableControl.Click += new EventHandler(this.EnableControl_Click);
             this.Controls.Add(this.enableControl);
 
             this.continousControl = new RadioButton();
             this.continousControl.Appearance = Appearance.Button;
-            this.SetParameters(ref this.continousControl, new Size(25, 25), new Point(5, 35), Color.Red, Color.Red, "");
+            this.SetParameters(ref this.continousControl, new Size(60, 25), new Point(5, 35), Color.Red, Color.Red, "F4");
             this.continousControl.Click += new EventHandler(this.ContinousControl_Click);
             this.Controls.Add(this.continousControl);
 
-            this.Size = new Size(270, 60);
+            this.Size = new Size(280, 60);
         }
 
         // Group of methods to set parameters for gui elements
@@ -145,6 +145,7 @@ namespace PokeHelper
             iRadioButton.BackColor = iBckColor;
             iRadioButton.FlatAppearance.CheckedBackColor = iForColor;
             iRadioButton.Text = iText;
+            iRadioButton.TextAlign = ContentAlignment.MiddleCenter;
             iRadioButton.Tag = iTag;
             iRadioButton.Name = iName;
         }
@@ -178,6 +179,9 @@ namespace PokeHelper
 
             // Register function to use during event
             this.globalKeyboardHook.KeyboardPressed += OnKeyPressed;
+
+            // Register countinous work
+            this.globalKeyboardHook.KeyboardPressed += OnKeyHold;
         }
         private void OnKeyPressed(object iSender, GlobalKeyboardHookEventArgs iE) // manage event of pressing keys with no focus
         {
@@ -198,25 +202,31 @@ namespace PokeHelper
                         this.EnableSystem();
                         break;
 
-                    default: // normally do nothing
-                        // do nothing
+                    case Keys.F4: // Change countinous work if F4 pressed
+                        this.ChangeContinousWork();
+                        break;
+
+                    default: // normally
+                        // Check hotkeys if functionality is enabled
+                        if (this.enable) MainHotkeyFunctionality(loggedKey);
                         break;
                 }
-                // Check hotkeys if functionality is enabled
-                if( this.Enable ) MainHotkeyFunctionality(loggedKey);
             }
-
+        }
+        private void OnKeyHold(object iSender, GlobalKeyboardHookEventArgs iE)
+        {
+            Keys loggedKey = iE.KeyboardData.Key;
 
             if (iE.KeyboardState == GlobalKeyboardHook.KeyboardState.KeyDown)
             {
                 // Check hotkeys if functionality
-                if (this.Enable && this.ContinousWork && this.Timer.ElapsedMilliseconds > this.MilisecondDelay)
+                if (this.enable && this.continousWork && this.timer.ElapsedMilliseconds > this.milisecondDelay)
                 {
-                    this.Timer.Reset();
+                    this.timer.Reset();
                     MainHotkeyFunctionality(loggedKey);
                 }
             }
-            this.Timer.Start();
+            this.timer.Start();
         }
         private void MainHotkeyFunctionality(Keys iLoggedKey) // check structure for hotkeys and use correct one
         {
@@ -353,26 +363,30 @@ namespace PokeHelper
             // Release mouse left button
             mouse_event(MOUSEEVENTF_LEFTUP, (uint)iTarget.X, (uint)iTarget.Y, 0, 0);
         }
+
         // ******************** HOTKEY MANAGEMENT ********************
         
         // ******************** CONTROL ENABILITY OF HOTKEYS ********************
         private void ChangeEnability() // Switch between anable and disable state
         {
-            if (this.Enable)
+            if (this.enable)
             {
-                this.Enable = false;
+                this.enable = false;
                 this.enableControl.BackColor = Color.Red;
+                this.enableControl.Text = "ESC/F12";
             }
             else
             {
-                this.Enable = true;
+                this.enable = true;
                 this.enableControl.BackColor = Color.Green;
+                this.enableControl.Text = "ESC";
             }
         } 
         private void EnableSystem() // Enable functionality o hotkeys
         {
-            this.Enable = true;
+            this.enable = true;
             this.enableControl.BackColor = Color.Green;
+            this.enableControl.Text = "ESC";
         } 
         private void DisableOrCloseSystem() // Disable dunctionality of hotkeys or close system
         {
@@ -395,10 +409,11 @@ namespace PokeHelper
                     break;
 
                 default:
-                    if (this.Enable)
+                    if (this.enable)
                     {
-                        this.Enable = false;
+                        this.enable = false;
                         this.enableControl.BackColor = Color.Red;
+                        this.enableControl.Text = "ESC/F12";
                     }
                     // other way close application
                     else this.Close();
@@ -447,6 +462,19 @@ namespace PokeHelper
                 }
             }
         }
+        private void ChangeContinousWork() // Activate or deactivate countinous work
+        {
+            if (this.continousWork)
+            {
+                this.continousWork = false;
+                this.continousControl.BackColor = Color.Red;
+            }
+            else
+            {
+                this.continousWork = true;
+                this.continousControl.BackColor = Color.Green;
+            }
+        }
 
         // ******************** CONTROL ENABILITY OF HOTKEYS ********************
 
@@ -478,15 +506,7 @@ namespace PokeHelper
         }
         private void ContinousControl_Click(object iSender, EventArgs iE) // change enability
         {
-            if(this.ContinousWork)
-            {
-                this.ContinousWork = false;
-                this.continousControl.BackColor = Color.Red;
-            } else
-            {
-                this.ContinousWork = true;
-                this.continousControl.BackColor = Color.Green;
-            }
+            this.ChangeContinousWork();
         }
         private void HotKeysButton_Click(object iSender, EventArgs iE) // manage hotkey window
         {

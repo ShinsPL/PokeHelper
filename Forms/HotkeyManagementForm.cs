@@ -172,6 +172,7 @@ namespace PokeHelper
             this.loadButton.Click += new EventHandler(this.LoadButton_Click);
             this.Controls.Add(this.loadButton);
         }
+
         // Group of methods to set parameters for gui elements
         private void SetParameters(ref Label iLabel, Size iSize, Point iPoint, Color iBckColor, Color iForColor, string iText, string iTag = "", string iName = "")
         {
@@ -295,6 +296,8 @@ namespace PokeHelper
             }
         }
 
+        // ******************** FORM FIELDS MANAGEMENT ********************
+
         // ******************** EVENTS FOR GUI ELEMENTS ********************
         private void SaveButton_Click(object iSender, EventArgs iE) // Save actual page into ini file
         {
@@ -367,6 +370,7 @@ namespace PokeHelper
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
+
         // ******************** EVENTS FOR GUI ELEMENTS ********************
     }
 }
